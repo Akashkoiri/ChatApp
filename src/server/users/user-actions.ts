@@ -1,5 +1,5 @@
 import db from "@/db/drizzle";
-import { User } from "@/db/drizzle/schemas/user-schema";
+import { User } from "@/db/drizzle/schemas/users-schema.ts";
 
 
 // Get all users
