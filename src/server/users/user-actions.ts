@@ -1,19 +1,28 @@
 import db from "@/db/drizzle";
-import { User } from "@/db/drizzle/schemas/users-schema.ts";
+import { users } from "@/db/drizzle/schemas/users-schema";
+import { eq } from "drizzle-orm";
 
 
 // Get all users
-export const getUsers = async () => {
-    const allUsers = await db.select().from(User);
+export const getAllUsers = async () => {
+    const allUsers = await db.select().from(users)
     return allUsers
 }
 
-// // Create a new user
-// export const CreateUser = async () => {
-//     const newUser = { name: 'John', age: 30, email: 'john@example.com' };
-//     await db.insert(User).values(newUser);
-//     console.log('New user created!');
-// }
+// Get user by name
+export const getUserByName = async (name: string) => {
+    const allUsers = await db.select()
+    .from(users)
+    .where(eq(users.name, name))
+    return allUsers
+}
+
+// Create a new user
+export const CreateUser = async (name: string, email: string) => {
+    const newUser = { name, email };
+    await db.insert(users).values(newUser);
+    console.log(`${name} user created!`);
+}
 
 // // Update a user's age
 // export const UpdateUser = async () => {
