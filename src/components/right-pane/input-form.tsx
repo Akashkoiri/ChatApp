@@ -17,7 +17,7 @@ export default function InputForm() {
         <form className='h-15 mt-2 border border-green-500' onSubmit={handleSubmit}>
             <input
                 type="text"
-                className="w-full h-full p-4"
+                className="w-full h-full p-4 outline-none"
                 placeholder="Type a message"
                 value={msg}
                 onChange={handleChange}
