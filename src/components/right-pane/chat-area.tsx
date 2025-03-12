@@ -21,10 +21,6 @@ export default function ChatArea() {
             <div>hdfgdskgfk</div>
             <div>hdfgdskgfk</div>
             <div>hdfgdskgfk</div>
-            <div>hdfgdskgfk</div>
-            <div>hdfgdskgfk</div>
-            <div>hdfgdskgfk</div>
-            <div>hdfgdskgfk</div>
         </div>
     )
 }

@@ -23,4 +23,5 @@
     "terminal.integrated.fontSize": 14,
     "editor.smoothScrolling": true,
     "breadcrumbs.enabled": false,
+    "editor.formatOnPaste": true,
 }

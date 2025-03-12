@@ -1,6 +1,6 @@
-import RightHeader from "@/components/right-header";
-import ChatArea from "@/components/chat-area";
-import InputForm from "@/components/input-form";
+import RightHeader from "@/components/right-pane/right-header";
+import ChatArea from "@/components/right-pane/chat-area";
+import InputForm from "@/components/right-pane/input-form";
 
 
 export default async function RightPane() {

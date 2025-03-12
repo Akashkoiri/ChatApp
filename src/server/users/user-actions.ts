@@ -24,14 +24,24 @@ export const CreateUser = async (name: string, email: string) => {
     console.log(`${name} user created!`);
 }
 
-// // Update a user's age
-// export const UpdateUser = async () => {
-//     await db.update(User).set({ age: 31 }).where(Users.email.eq(newUser.email));
-//     console.log('User updated!');
-// }
+// Update a user's name
+export const UpdateUserName = async (oldName: string, newName: string) => {
+    await db.update(users)
+    .set({ name: newName })
+    .where(eq(users.name, oldName));
+    console.log("Users's name updated!");
+}
 
-// // Delete a user
-// export const DeleteUser = async () => {
-//     await db.delete(User).where(Users.email.eq(newUser.email));
-//     console.log('User deleted!');
-// }
+// Update a user's email
+export const UpdateUserEmail = async (oldEmail: string, newEmail: string) => {
+    await db.update(users)
+    .set({ email: newEmail })
+    .where(eq(users.email, oldEmail));
+    console.log("Users's email updated!");
+}
+
+// Delete a user
+export const DeleteUser = async (name: string) => {
+    await db.delete(users).where(eq(users.name, name));
+    console.log('User deleted!');
+}
