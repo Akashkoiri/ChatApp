@@ -8,7 +8,7 @@ export const messages = pgTable("messages", {
     id: uuid("id").defaultRandom().primaryKey().notNull(),
     content: text("content").notNull(),
     fromId: uuid("from_id").notNull(),
-    toId: uuid("to_id").notNull(),
+    toId: uuid("to_id").notNull(),					// toId ka zarurat nhi hi yaha
     conversationId: uuid("conversation").notNull(),
 });
 

@@ -9,12 +9,12 @@ export const getAllUsers = async () => {
     return allUsers
 }
 
-// Get user by name
-export const getUserByName = async (name: string) => {
-    const allUsers = await db.select()
+// Get user by UserId
+export const getUserById = async (userId: string) => {
+    const user = await db.select()
     .from(users)
-    .where(eq(users.name, name))
-    return allUsers
+    .where(eq(users.id, userId))
+    return user
 }
 
 // Create a new user
@@ -25,23 +25,23 @@ export const CreateUser = async (name: string, email: string) => {
 }
 
 // Update a user's name
-export const UpdateUserName = async (oldName: string, newName: string) => {
+export const UpdateUserName = async (userId: string, newName: string) => {
     await db.update(users)
     .set({ name: newName })
-    .where(eq(users.name, oldName));
+    .where(eq(users.id, userId));
     console.log("Users's name updated!");
 }
 
 // Update a user's email
-export const UpdateUserEmail = async (oldEmail: string, newEmail: string) => {
+export const UpdateUserEmail = async (userId: string, newEmail: string) => {
     await db.update(users)
     .set({ email: newEmail })
-    .where(eq(users.email, oldEmail));
+    .where(eq(users.id, userId));
     console.log("Users's email updated!");
 }
 
 // Delete a user
-export const DeleteUser = async (name: string) => {
-    await db.delete(users).where(eq(users.name, name));
+export const DeleteUser = async (userId: string) => {
+    await db.delete(users).where(eq(users.id, userId));
     console.log('User deleted!');
 }

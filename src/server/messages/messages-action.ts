@@ -10,39 +10,38 @@ export const getAllMessages = async () => {
     return allMessages
 }
 
-// Get msg by name
-export const getAllMessagesByName = async (name: string) => {
+// Get msg by user id
+export const getAllMessagesByuserId = async (userId: string) => {
     const allMessages = await db.select()
     .from(messages)
-    .where(eq(messages.fromId, name))
+    .where(eq(messages.fromId, userId))
     return allMessages
 }
 
-// Create a new user
-export const CreateMessage = async (content: string, fromId:string, toId:string, conversationId:string) => {
+// Get msg by user id
+export const getAllMessagesByConversationId = async (conversationId: string) => {
+    const allMessages = await db.select()
+    .from(messages)
+    .where(eq(messages.conversationId, conversationId))
+    return allMessages
+}
+
+// Create a message
+export const CreateMessage = async (content: string, fromId: string, toId: string, conversationId: string) => {
     const newMessage = { content, fromId, toId, conversationId };
     await db.insert(messages).values(newMessage);
-    console.log(`${name} user created!`);
+    console.log('Message Created!');
 }
 
-// Update a user's name
-export const UpdateUserName = async (oldName: string, newName: string) => {
-    await db.update(users)
-    .set({ name: newName })
-    .where(eq(users.name, oldName));
-    console.log("Users's name updated!");
+// Update a message
+export const UpdateMessage = async (messageId: string, newMessage: string) => {
+    await db.update(messages)
+    .set({ content: newMessage })
+    .where(eq(messages.id, messageId));
 }
 
-// Update a user's email
-export const UpdateUserEmail = async (oldEmail: string, newEmail: string) => {
-    await db.update(users)
-    .set({ email: newEmail })
-    .where(eq(users.email, oldEmail));
-    console.log("Users's email updated!");
-}
-
-// Delete a user
-export const DeleteUser = async (name: string) => {
-    await db.delete(users).where(eq(users.name, name));
-    console.log('User deleted!');
+// Delete a message
+export const DeleteMessage = async (messageId: string) => {
+    await db.delete(users).where(eq(messages.id, messageId));
+    console.log('Message deleted!');
 }
