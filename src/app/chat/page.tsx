@@ -1,6 +1,5 @@
-import LeftPane from "@/layout/left-pane";
-import RightPane from "@/layout/right-pane";
-
+import LeftPane from "@/components/layout/left-pane";
+import RightPane from "@/components/layout/right-pane";
 
 export default async function Chat() {
   return (

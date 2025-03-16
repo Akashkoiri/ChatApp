@@ -1,17 +1,17 @@
 import RightHeader from "@/components/right-pane/right-header";
 import ChatArea from "@/components/right-pane/chat-area";
 import InputForm from "@/components/right-pane/input-form";
-
+import { getAllMessages } from "@/server/messages/messages-action";
 
 export default async function RightPane() {
-  // const msgs = getallMsgs()
+  const messages = await getAllMessages();
 
   return (
     <div className="basis-2/3 border border-red-600 bg-[#030712] text-white p-4 flex flex-col">
       {/* Header */}
       <RightHeader />
       {/* Chat Area */}
-      <ChatArea/>
+      <ChatArea messages={messages} />
       {/* Input form */}
       <InputForm />
     </div>

@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 export default function Home() {
+
   return (
     <div className="flex items-center justify-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <Link href={"/chat"} className="pointer">
