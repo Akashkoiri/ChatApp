@@ -1,14 +1,12 @@
-import db from "@/lib/db/drizzle"
-import { conversations } from "@/lib/db/drizzle/schemas/conversations-schema"
+import { createConversation, getConversations } from "@/lib/server/conversations/conversation-actions"
 
 export async function GET(request: Request) {
-    const allConversations = await db.select().from(conversations)
+    const allConversations = await getConversations()
     return new Response(JSON.stringify(allConversations), { status: 200 })
 }
 
-// export async function POST(request: Request) {
-//     const { name, email } = await request.json()
-//     const newUser = { name, email };
-//     await db.insert(conversations).values(newUser);
-//     return new Response('Conversation created!', { status: 200 })
-// }
+export async function POST(request: Request) {
+    const {name} = await request.json()
+    const newMessage = await createConversation(name)
+    return new Response(JSON.stringify(newMessage), { status: 200 })
+}

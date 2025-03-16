@@ -7,7 +7,7 @@
     "workbench.editor.tabActionLocation": "right",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "icons-kamekazi-dark",
-    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
+    "editor.fontFamily": "consolas",
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
     "editor.cursorBlinking": "expand",
