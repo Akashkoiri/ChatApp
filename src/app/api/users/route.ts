@@ -1,13 +1,15 @@
-import db from "@/db/drizzle"
-import { conversations } from "@/db/drizzle/schemas/conversations-schema"
+import db from "@/lib/db/drizzle"
+import { users } from "@/lib/db/drizzle/schemas/users-schema"
 
 export async function GET(request: Request) {
-    const allConversations = await db.select().from(conversations)
-    return new Response(JSON.stringify(allConversations), { status: 200 })
+    const allUsers = await db.select().from(users)
+    return new Response(JSON.stringify(allUsers), { status: 200 })
 }
 
-export async function POST(request: Request) {
-    const { name, email } = await request.json()
-    await db.insert(conversations).values({ name, email })
-    return new Response('Conversation created!', { status: 200 })
-}
+// export async function POST(request: Request) {
+//     const data = await request.json()
+//     // await db.insert(conversations).values({ name, email })
+//     return new Response(`${data} Conversation created!`, { status: 200 })
+//     // return new Response(`${name} ${email}Conversation created!`, { status: 200 })
+// }
+

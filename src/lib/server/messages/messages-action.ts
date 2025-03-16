@@ -1,6 +1,6 @@
-import db from "@/db/drizzle";
-import { messages } from "@/db/drizzle/schemas/mesages-schema";
-import { users } from "@/db/drizzle/schemas/users-schema";
+import db from "@/lib/db/drizzle";
+import { messages } from "@/lib/db/drizzle/schemas/mesages-schema";
+import { users } from "@/lib/db/drizzle/schemas/users-schema";
 import { eq } from "drizzle-orm";
 
 
@@ -13,16 +13,16 @@ export const getAllMessages = async () => {
 // Get msg by user id
 export const getAllMessagesByuserId = async (userId: string) => {
     const allMessages = await db.select()
-    .from(messages)
-    .where(eq(messages.fromId, userId))
+        .from(messages)
+        .where(eq(messages.fromId, userId))
     return allMessages
 }
 
 // Get msg by user id
 export const getAllMessagesByConversationId = async (conversationId: string) => {
     const allMessages = await db.select()
-    .from(messages)
-    .where(eq(messages.conversationId, conversationId))
+        .from(messages)
+        .where(eq(messages.conversationId, conversationId))
     return allMessages
 }
 
@@ -36,8 +36,8 @@ export const CreateMessage = async (content: string, fromId: string, toId: strin
 // Update a message
 export const UpdateMessage = async (messageId: string, newMessage: string) => {
     await db.update(messages)
-    .set({ content: newMessage })
-    .where(eq(messages.id, messageId));
+        .set({ content: newMessage })
+        .where(eq(messages.id, messageId));
 }
 
 // Delete a message

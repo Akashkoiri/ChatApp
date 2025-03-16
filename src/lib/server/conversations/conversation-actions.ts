@@ -1,6 +1,6 @@
-import db from "@/db/drizzle";
-import { conversations } from "@/db/drizzle/schemas/conversations-schema";
-import { users } from "@/db/drizzle/schemas/users-schema";
+import db from "@/lib/db/drizzle";
+import { conversations } from "@/lib/db/drizzle/schemas/conversations-schema";
+import { users } from "@/lib/db/drizzle/schemas/users-schema";
 import { eq } from "drizzle-orm";
 
 
@@ -13,8 +13,8 @@ export const getConversations = async () => {
 // Get user by UserId
 export const getConversationsById = async (conversationId: string) => {
     const conversation = await db.select()
-    .from(conversations)
-    .where(eq(conversations.id, conversationId))
+        .from(conversations)
+        .where(eq(conversations.id, conversationId))
     return conversation
 }
 
@@ -28,8 +28,8 @@ export const CreateConversation = async (name: string, email: string) => {
 // Update a user's name
 export const UpdateConversation = async (userId: string, newName: string) => {
     await db.update(users)
-    .set({ name: newName })
-    .where(eq(users.id, userId));
+        .set({ name: newName })
+        .where(eq(users.id, userId));
     console.log("Users's name updated!");
 }
 

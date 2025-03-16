@@ -1,5 +1,5 @@
 "use client";
-import { getFriendFromStore } from "@/client/hooks/getFriendFromStore";
+import { getFriendFromStore } from "@/lib/client/hooks/getFriendFromStore";
 import TextMsg from "./text-msg";
 import { useStore } from "@/lib/store/store";
 

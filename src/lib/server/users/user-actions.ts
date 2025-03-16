@@ -1,5 +1,5 @@
-import db from "@/db/drizzle";
-import { users } from "@/db/drizzle/schemas/users-schema";
+import db from "@/lib/db/drizzle";
+import { users } from "@/lib/db/drizzle/schemas/users-schema";
 import { eq } from "drizzle-orm";
 
 
@@ -12,8 +12,8 @@ export const getAllUsers = async () => {
 // Get user by UserId
 export const getUserById = async (userId: string) => {
     const user = await db.select()
-    .from(users)
-    .where(eq(users.id, userId))
+        .from(users)
+        .where(eq(users.id, userId))
     return user
 }
 
@@ -27,16 +27,16 @@ export const CreateUser = async (name: string, email: string) => {
 // Update a user's name
 export const UpdateUserName = async (userId: string, newName: string) => {
     await db.update(users)
-    .set({ name: newName })
-    .where(eq(users.id, userId));
+        .set({ name: newName })
+        .where(eq(users.id, userId));
     console.log("Users's name updated!");
 }
 
 // Update a user's email
 export const UpdateUserEmail = async (userId: string, newEmail: string) => {
     await db.update(users)
-    .set({ email: newEmail })
-    .where(eq(users.id, userId));
+        .set({ email: newEmail })
+        .where(eq(users.id, userId));
     console.log("Users's email updated!");
 }
 

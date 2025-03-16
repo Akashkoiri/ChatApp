@@ -1,5 +1,5 @@
 "use client";
-import { getConversations } from "@/server/conversations/conversation-actions";
+import { getConversations } from "@/lib/server/conversations/conversation-actions";
 import FriendsListItem from "./friends-list-item";
 
 type FriendListProps = {

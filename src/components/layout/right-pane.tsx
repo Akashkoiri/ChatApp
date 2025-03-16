@@ -1,7 +1,7 @@
 import RightHeader from "@/components/right-pane/right-header";
 import ChatArea from "@/components/right-pane/chat-area";
 import InputForm from "@/components/right-pane/input-form";
-import { getAllMessages } from "@/server/messages/messages-action";
+import { getAllMessages } from "@/lib/server/messages/messages-action";
 
 export default async function RightPane() {
   const messages = await getAllMessages();

@@ -1,8 +1,8 @@
-import db from "@/db/drizzle"
-import { conversations } from "@/db/drizzle/schemas/conversations-schema"
+import db from "@/lib/db/drizzle"
+import { messages } from "@/lib/db/drizzle/schemas/mesages-schema"
 
 export async function GET(request: Request) {
-    const allConversations = await db.select().from(conversations)
-    return new Response(JSON.stringify(allConversations), { status: 200 })
+    const allMessages = await db.select().from(messages)
+    return new Response(JSON.stringify(allMessages), { status: 200 })
 }
 

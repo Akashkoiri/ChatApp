@@ -1,7 +1,7 @@
 import LeftHeader from "@/components/left-pane/left-header";
 import FriendList from "@/components/left-pane/friends-list";
 import InstallChatApp from "@/components/left-pane/install-chat-app";
-import { getConversations } from "@/server/conversations/conversation-actions";
+import { getConversations } from "@/lib/server/conversations/conversation-actions";
 
 export default async function LeftPane() {
   const data = await getConversations();
