@@ -10,15 +10,11 @@ export default function ConversationListItem({
   id,
   name,
 }: ConversationListItemProps) {
-  const setConversationInStore = useStore(
-    (state: any) => state.setConversation
-  );
+  const setConversationInStore = useStore((state: any) => state.setConversation);
 
   return (
     <div
-      onClick={() => {
-        setConversationInStore(name, id);
-      }}
+      onClick={() => {setConversationInStore(name, id)}}
       className="cursor-pointer"
     >
       <div className="flex items-center rounded-md p-3 hover:bg-gray-800">
