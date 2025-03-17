@@ -1,5 +1,5 @@
 import LeftHeader from "@/components/left-pane/left-header";
-import FriendList from "@/components/left-pane/friends-list";
+import FriendList from "@/components/left-pane/conversation-list";
 import InstallChatApp from "@/components/left-pane/install-chat-app";
 import { getConversations } from "@/lib/server/conversations/conversation-actions";
 
