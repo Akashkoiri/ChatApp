@@ -1,4 +1,5 @@
 "use client";
+
 import { useStore } from "@/lib/store/store";
 
 type ConversationListItemProps = {
@@ -14,7 +15,7 @@ export default function ConversationListItem({
 
   return (
     <div
-      onClick={() => {setConversationInStore(name, id)}}
+      onClick={() => { setConversationInStore(name, id) }}
       className="cursor-pointer"
     >
       <div className="flex items-center rounded-md p-3 hover:bg-gray-800">

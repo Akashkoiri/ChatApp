@@ -1,6 +1,6 @@
 import { primaryKey, uuid } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core/table";
-import { conversations } from "./conversations-schema.js";
+import { conversations } from "./conversations-schema";
 import { relations } from "drizzle-orm/relations";
 import { users } from "./users-schema";
 

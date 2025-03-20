@@ -1,8 +1,10 @@
 "use server";
 
 import db from "@/lib/db/drizzle";
+import { conversations } from "@/lib/db/drizzle/schemas/conversations-schema";
 import { messages } from "@/lib/db/drizzle/schemas/mesages-schema";
-import { users } from "@/lib/db/drizzle/schemas/users-schema";
+import { users, usersRelations } from "@/lib/db/drizzle/schemas/users-schema";
+import { usersToConversations } from "@/lib/db/drizzle/schemas/users-to-conversations-schema";
 import { eq } from "drizzle-orm";
 
 // Get all messages
@@ -33,12 +35,16 @@ export const getMessagesByConversationId = async (conversationId: string) => {
 export const createMessage = async (
   content: string,
   fromId: string,
-  toId: string,
   conversationId: string
 ) => {
-  const newMessage = { content, fromId, toId, conversationId };
-  await db.insert(messages).values(newMessage);
-  console.log("Message Created!");
+  const toId = await db.query.conversations.findFirst({
+    where: eq(conversations.id, conversationId)
+  })
+
+  // const newMessage = { content, fromId, toId, conversationId };
+  // await db.insert(messages).values(newMessage);
+  // return "Message Created!";
+  return toId;
 };
 
 // Update a message
@@ -47,11 +53,11 @@ export const updateMessage = async (messageId: string, newMessage: string) => {
     .update(messages)
     .set({ content: newMessage })
     .where(eq(messages.id, messageId));
-  console.log("Message updated!");
+  return "Message updated!";
 };
 
 // Delete a message
 export const deleteMessage = async (messageId: string) => {
   await db.delete(users).where(eq(messages.id, messageId));
-  console.log("Message deleted!");
+  return "Message deleted!";
 };
