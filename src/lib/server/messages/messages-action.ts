@@ -1,10 +1,8 @@
 "use server";
 
 import db from "@/lib/db/drizzle";
-import { conversations } from "@/lib/db/drizzle/schemas/conversations-schema";
 import { messages } from "@/lib/db/drizzle/schemas/mesages-schema";
-import { users, usersRelations } from "@/lib/db/drizzle/schemas/users-schema";
-import { usersToConversations } from "@/lib/db/drizzle/schemas/users-to-conversations-schema";
+import { users } from "@/lib/db/drizzle/schemas/users-schema";
 import { eq } from "drizzle-orm";
 
 // Get all messages
@@ -37,14 +35,12 @@ export const createMessage = async (
   fromId: string,
   conversationId: string
 ) => {
-  const toId = await db.query.conversations.findFirst({
-    where: eq(conversations.id, conversationId)
-  })
-
-  // const newMessage = { content, fromId, toId, conversationId };
-  // await db.insert(messages).values(newMessage);
-  // return "Message Created!";
-  return toId;
+  const newMessage = { content, fromId, conversationId };
+  const [{ insertedId: id }] = await db
+    .insert(messages)
+    .values(newMessage)
+    .returning({ insertedId: messages.id });
+  return { ...newMessage, id };
 };
 
 // Update a message
